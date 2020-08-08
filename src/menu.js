@@ -14,7 +14,7 @@ const lorem = new LoremIpsum({
 function generateSection(numberOfItems = Math.round(Math.random() * 5) + 1) {
   let items = [];
   for (var i = 0; i < numberOfItems; i++) {
-    items.push(generateItemMenu());
+    items.push(generateItem());
   }
   return {
     title: lorem.generateWords(Math.round(Math.random() * 3) + 1),
@@ -30,10 +30,10 @@ function generateSection(numberOfItems = Math.round(Math.random() * 5) + 1) {
   };
 }
 
-function generateItemMenu() {
+function generateItem() {
   return {
-    name: lorem.generateWords(Math.round(Math.random() * 5) + 1),
-    description: lorem.generateSentences(1),
+    name: lorem.generateWords(Math.round(Math.random() * 3) + 1),
+    description: lorem.generateSentences(2),
     price: Math.round(Math.random() * 14) + 1,
   };
 }
@@ -41,15 +41,7 @@ function generateItemMenu() {
 function generateMenu(title = lorem.generateWords(1)) {
   return {
     title,
-    banner:
-      "https://www.onegreenplanet.org/wp-content/uploads/2020/03/wendys-the-plantiful-2048x1556.jpeg",
-    sections: [
-      generateSection(),
-      generateSection(),
-      generateSection(),
-      generateSection(),
-      generateSection(),
-    ],
+    columns: generateColumns(generateSectionArray()),
   };
 }
 
@@ -66,8 +58,33 @@ function generatePage(numberOfMenus = 1) {
   };
 }
 
+function generateItemArray(numberOfItems = 10) {
+  return new Array(numberOfItems).fill(null).map(() => generateItem());
+}
+
+function generateSectionArray(numberOfSections = 4) {
+  return new Array(numberOfSections).fill(null).map(() => generateSection());
+}
+
+function generateColumns(items) {
+  let cols = [[], []];
+  let pingPong = 0;
+  for (var i = 0; i < items.length; i++) {
+    cols[pingPong].push(items[i]);
+    pingPong += 1;
+    if (!cols[pingPong]) {
+      pingPong = 0;
+    }
+  }
+  console.log(cols);
+  return cols;
+}
+
 export default {
-  generateItemMenu,
+  generateItem,
   generateMenu,
   generateSection,
+  generatePage,
 };
+
+// function generateItems
