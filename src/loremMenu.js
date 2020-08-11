@@ -1,4 +1,5 @@
 import { LoremIpsum } from "lorem-ipsum";
+import shortid from "shortid";
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
@@ -12,10 +13,6 @@ const lorem = new LoremIpsum({
 });
 
 function generateSection(numberOfItems = Math.round(Math.random() * 5) + 1) {
-  let items = [];
-  for (var i = 0; i < numberOfItems; i++) {
-    items.push(generateItem());
-  }
   return {
     title: lorem.generateWords(Math.round(Math.random() * 3) + 1),
     subTitle:
@@ -26,7 +23,7 @@ function generateSection(numberOfItems = Math.round(Math.random() * 5) + 1) {
       Math.random() > 0.5
         ? lorem.generateWords(Math.round(Math.random() * 3) + 1)
         : undefined,
-    items,
+    items: generateItemArray(numberOfItems),
   };
 }
 
@@ -35,32 +32,33 @@ function generateItem() {
     name: lorem.generateWords(Math.round(Math.random() * 3) + 1),
     description: lorem.generateSentences(2),
     price: Math.round(Math.random() * 14) + 1,
-  };
-}
-
-function generateMenu(title = lorem.generateWords(1)) {
-  return {
-    title,
-    columns: generateColumns(generateSectionArray()),
-  };
-}
-
-function generatePage(numberOfMenus = 1) {
-  let menus = [];
-  for (var i = 0; i < numberOfMenus; i++) {
-    menus.push(generateMenu());
-  }
-  return {
-    logo: "",
-    heroLogo: "",
-    heroImg: "",
-    menus,
+    id: shortid.generate(),
   };
 }
 
 function generateItemArray(numberOfItems = 10) {
   return new Array(numberOfItems).fill(null).map(() => generateItem());
 }
+
+// function generateMenu(title = lorem.generateWords(1)) {
+//   return {
+//     title,
+//     columns: generateColumns(generateSectionArray()),
+//   };
+// }
+
+// function generatePage(numberOfMenus = 1) {
+//   let menus = [];
+//   for (var i = 0; i < numberOfMenus; i++) {
+//     menus.push(generateMenu());
+//   }
+//   return {
+//     logo: "",
+//     heroLogo: "",
+//     heroImg: "",
+//     menus,
+//   };
+// }
 
 function generateSectionArray(numberOfSections = 4) {
   return new Array(numberOfSections).fill(null).map(() => generateSection());
@@ -76,8 +74,26 @@ function generateColumns(items) {
       pingPong = 0;
     }
   }
-  console.log(cols);
   return cols;
+}
+
+function generatePage(menus) {
+  return {
+    columns: generateColumns(generateMenuArray()),
+  };
+}
+
+function generateMenuArray(numberOfMenus = Math.ceil(Math.random() * 5)) {
+  return new Array(numberOfMenus).fill(null).map(() => generateMenu());
+}
+
+function generateMenu(title) {
+  return {
+    id: `#${shortid.generate()}`,
+    title: lorem.generateWords(1),
+    description: lorem.generateParagraphs(1),
+    sections: generateSectionArray(),
+  };
 }
 
 export default {

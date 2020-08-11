@@ -1,38 +1,288 @@
-.App {
-  text-align: center;
+div.menu {
+  padding-left: 250px;
+  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.50); */
 }
 
-.App-logo {
-  height: 40vmin;
+div.menu>.img {
+  /* max-width: 100%; */
+  /* background-image: url('http://www.pets4homes.co.uk/images/articles/1111/large/feline-influenza-all-about-cat-flu-5239fffd61ddf.jpg'); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background: center; */
+  width: 100%;
+  height: 0;
+  padding-top: 66.64%;
+}
+
+div#menus {
+  display: flex;
+  max-width: 800px;
+  width: 100%;
+  padding: 30px;
+  margin: 0 auto;
+  background: #fff;
+}
+
+div.menu-column {
+  display: inline-flex;
+  flex-direction: column;
+  margin-right: 30px;
+  max-width: 400px;
+}
+
+div.menu-column:last-child {
+  margin-right: 0px;
+}
+
+div.menu-section {
+  /* margin-bottom: 150px; */
+  border: 1px solid rgba(0, 0, 0, 0.9);
+  padding: 10px;
+  margin: 30px 0;
+  border-radius: 2px;
+}
+
+div.menu-section:last-child {
+  margin-bottom: 0px;
+}
+
+div.menu-section-item {
+  color: #a7a7a7;
+  margin-bottom: 40px;
+  padding: 5px;
+}
+
+div.menu-section>div:last-child div.menu-section-item {
+  margin-bottom: 0px;
+}
+
+div.menu-section-item>div {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  /* border-bottom: 1px solid rgba(0, 0, 0, .9); */
+  /* padding: 10px 0; */
+}
+
+div.menu-section-item div h3.section-item-name, div.menu-section-item div p.section-item-price {
+  font-weight: bold;
+  font-size: 17px;
+  margin: 0;
+  color: #2e2e2e;
+}
+
+div.menu-section-item div p.section-item-price {
+  /* font-weight: normal; */
+}
+
+p.section-item-description {
+  padding: 10px 0;
+}
+
+div.menu-section div.menu-section-header {
+  /* padding: 5px; */
+  /* margin-bottom: 30px; */
+}
+
+div.menu-section div.menu-section-header h3.menu-section-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+div.menu-section-item p.section-item-description {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 20px;
+  background: #FA688E;
+}
+
+#sidebar {
+  position: fixed;
+  width: 200px;
+  padding: 25px 0;
+  /* height: 100%; */
+  /* background: red; */
+  display: flex;
+  flex-direction: column;
+}
+
+#sidebar #navigation {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /* padding-top: 20px */
+  /* padding: 25px; */
+}
+
+#sidebar #navigation a {
+  /* margin-bottom: 15px; */
+  margin: 0;
+  padding: 15px;
+  font-weight: bold;
+  opacity: .25;
+  color: #000000;
+  text-decoration: none;
+}
+
+#sidebar #navigation a.active {
+  opacity: 1;
+}
+
+.menu-section-item h3, .menu-section-item p {
+  font-size: 16px;
+  font-weight: normal;
+  color: #5a5a5a;
+}
+
+.menu-section-item h3 {
+  /* font-weight: bold; */
+}
+
+.menu-quickbits {
+  max-width: 450px;
+  /* padding: 30px; */
+  padding-bottom: 60px;
+}
+
+.menu-quickbits h3 {
+  margin: 0;
+}
+
+.menu-quickbits p {
+  padding: 10px 0;
+  margin: 0;
+}
+
+.menu-container {
+  max-width: 870px;
+  background: #fff;
+  padding: 70px;
+  margin: 0 auto;
+}
+
+button {
+  background: #E5E5E5;
+  font-weight: bold;
+  font-size: 16px;
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  border: none;
+  color: #373737;
+}
+
+.item-list {
+  padding: 15px;
+  border-radius: 10px;
+  background: #fff;
+  position: fixed;
+  width: 270px;
+  top: 20px;
+  left: 20px;
+}
+
+.item-list>* {
+  margin-bottom: 40px;
+}
+
+.item-list>*:last-child {
+  margin-bottom: 0;
+}
+
+.menu-section-item input {
+  /* flex: 1; */
+  border: none;
+  padding: 0;
+  width: 0;
+}
+
+.menu-section-item textarea {
+  border: none;
+  font-size: 16px;
+  resize: none;
+}
+
+.menu-section-item textarea:focus {
+  outline: none;
+}
+
+.menu-section-item textarea.section-item-name, .menu-section-item>div textarea.section-item-price {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.menu-section-item input.section-item-name:focus, .menu-section-item>div .section-item-price:focus {
+  outline: none;
+}
+
+.menu-section-item>div .section-item-name {
+  border: none;
+  flex: 3;
+}
+
+.menu-section-item>div .section-item-price {
+  border: none;
+  flex: 1;
+  text-align: right;
+}
+
+.section-item-description {
+  width: 100%;
+}
+
+.section-item-price, .section-item-description, .section-item-name {
+  background: transparent;
+}
+
+.readOnly-false .section-item-price, .section-item-name {
+  width: 75%;
+  height: 15px;
+}
+
+.readOnly-false {
+  background: #E5E5E5;
+  border-radius: 5px;
+}
+
+.readOnly-true {
+  background: #ffffff;
+  border-radius: 5px;
+  user-select: none;
+}
+
+.readOnly-true * {
+  user-select: none;
+}
+
+.dragging-true {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+  z-index: 9999999 !important;
+  position: absolute;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.placeholder {
+  height: 100px;
+  margin-bottom: 40px;
+  background: #F0F0F0;
+  border-radius: 5px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.dragging-false {
+  z-index: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.section-col>textarea {
+  width: 100%;
+  resize: none;
+  padding: 0;
+  border: none;
+  font-size: 16px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.section-col>textarea:focus {
+  outline: none;
 }
